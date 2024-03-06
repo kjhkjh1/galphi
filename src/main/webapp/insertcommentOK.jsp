@@ -19,8 +19,12 @@
 <%
 	BookCommentService.getInstance().insertComment(co);
 	request.setAttribute("ISBN", co.getISBN());
+	
 	pageContext.forward("selectByISBN.jsp");
 %>
+<%-- 11111 ${ISBN} <br/>
+2222 ${co.ISBN}<br/>
+333 ${co} --%>
 </body>
 </html>
 
