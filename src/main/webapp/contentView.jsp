@@ -254,7 +254,7 @@
 	
 		<tr style="background-color: royalblue;">
 			<th class="align-middle text-center" colspan="4" style="font-size: 30px;">
-				후기 입력 ${ISBN}
+				후기 입력
 			</th>
 		</tr>
 		
@@ -264,10 +264,15 @@
 			<td colspan="4">
 				<!-- 수정 또는 삭제할 댓글의 책번호-->
 <<<<<<< HEAD
+<<<<<<< HEAD
 				ISBN: <input type="text" name="ISBN" value="${vo.ISBN}"/>
 =======
 				ISBN: <input type="text" name="ISBN" value="${comment[0].ISBN}"/>
 >>>>>>> da8d9c4cdaab8157e15e3ad7fcd41f927824dbf0
+=======
+				ISBN: <input type="text" name="ISBN" value="${vo.ISBN}">
+
+>>>>>>> fbaf90c363e30052e3bfee0da0dfa6d54ab02ae6
 				<!-- 현재 댓글이 누구의(?) 댓글인가 -->
 				nick: <input type="hidden" name="nick" value="1"/>
 				<!-- 작업 모드, 1 => 댓글 저장, 2 => 댓글 수정, 3 => 댓글 삭제 -->
