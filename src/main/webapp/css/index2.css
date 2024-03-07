@@ -1,0 +1,242 @@
+body {
+   	background-color: #fbe9d7;
+}
+
+wrapper {
+   	width: 1920px;
+   	height: auto;
+   	margin-top: 5%;
+}
+
+.header {
+  	padding: 20px;
+   	display: flex;
+   	list-style-type: none;
+   	flex-direction: row;
+   	background-color: #fbe9d7;
+}
+
+.header .logo {
+	margin-left: 6%;
+	width: 25%;
+   	height: 20%;
+   	float: left;
+}
+
+.header .search {
+   	width: 70%;
+   	height: 48px;
+   	border: 3px solid #7f5539;
+   	margin-top: 40px;
+   	background-color: white;
+   	display : flex;
+   	border-radius: 12px;
+}
+
+.search form {
+  	width: 100%;
+   	height: 100%;
+   	border:0;
+   	background-color: #7f5539;
+   	outline: none;
+   	align-content: middle;
+   	display: inline-block;
+}
+
+.search select {
+   	font-size: 90%;
+   	width: 30%;
+   	height: 100%;
+   	border:0;
+   	background-color: #7f5539;
+   	text-decoration: bold;
+   	color: white;
+   	text-align: center;
+   	outline: none;
+   	margin: auto;
+   	float: left;
+}
+#search_text {
+   	width: 800px;
+   	margin: 10px;
+}
+
+.search input {
+   	font-size: 80%;
+   	width: 70%;
+   	border:0;
+   	outline: none;
+ 	display: flex;
+   	float: left;
+}
+
+#search_button {
+   	width: 20%;
+   	height: 42px;
+   	margin: auto;
+   	border: 0;
+   	outline: none;
+   	float: right;
+   	color: black;
+   	border-bottom-right-radius: 8px;
+   	border-top-right-radius: 8px;
+}
+
+#search_button:hover{
+   	width: 20%;
+   	height: 42px;
+   	margin: 0px;
+   	border: 0;
+   	background-color: white;
+   	outline: none;
+   	float: right;
+   	color: black;
+   	border-radius: 8px;
+}
+
+.header .login {
+   	width: 100%;
+   	height: 10%;
+   	padding: 0px;
+   	margin-top: 0.01%;
+   	margin-right: 6%;
+}
+
+.login button {
+   	width: 20%;
+   	height: 10%;
+   	padding: 8px 16px;
+   	border: none;
+   	text-align: center;
+   	text-decoration: none;
+   	display: inline;
+   	font-size: 12px;
+   	transition-duration: 0.4s;
+   	cursor: pointer;
+   	background-color: #fbe9d7;
+   	color: gray;
+   	border-radius: 12px;
+}
+
+.login button:hover {
+   background-color: #e0e0e0;
+   color: #7f5539;
+}
+
+.main {
+   width: 80%;
+   height: auto;
+   margin-left: 10%;
+   margin-right: 10%;
+   margin-top: 1%;
+   display: flex;
+   list-style-type: none;
+   flex-direction: row;
+}
+
+.main .Category {
+	width: 100%;
+   	height: auto;
+   	float: left;
+}
+
+.Category .cate_list {
+    background-color: #7f5539;
+    color: white;
+    cursor: pointer;
+    padding-left: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    border-radius: 8px;
+}
+
+.active .cate_list:hover {
+   	background-color: #555;
+}
+
+.category {
+   	padding: 0 10px; 
+   	max-height: 0;
+   	overflow: hidden;
+   	transition: max-height 0.2s ease-out;
+   	background-color: #f1f1f1;
+}
+
+.cate_list:after {
+   	content: '\002B';
+   	color: white;
+   	font-weight: bold;
+   	float: right;
+   	margin-left: 5px;
+}
+
+.active:after {
+   	content: "\2212";
+}
+
+.Category a {
+   	text-decoration: none;
+   	color: black;
+}
+
+.dropdown {
+  	position: relative;
+  	display: inline-block;
+}
+
+.dropdown-content {
+  	display: none;
+  	position: absolute;
+  	background-color: #f9f9f9;
+  	min-width: 160px;
+  	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  	padding: 12px 16px;
+  	z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+ 	 display: block;
+}
+
+.main .rolling_book {
+   	width:70%;
+   	height: auto;
+   	float: left;
+}
+
+.rolling_book table {
+   	width: 80%;
+   	height: 150px;
+   	margin:auto;
+   	border: 1px solid black;
+}
+
+.rolling_book table th {
+   	text-align: left;
+   	vertical-align: middle;
+   	background-color: lightcoral;
+}
+
+.rolling_book table td {
+   	width : 80%;
+   	height : 150px;
+   	background-color: white;
+   	margin:0;
+   	padding:0;
+}
+
+.rolling_book table button {
+   	vertical-align: middle;
+   	border: none;
+   	background-color: transparent;
+}
+
+.footer{
+   	width: 100%;
+   	height: 50px;
+}
