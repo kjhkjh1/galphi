@@ -257,7 +257,7 @@
 		<tr style="display: none;">
 			<td colspan="4">
 				<!-- 수정 또는 삭제할 댓글의 책번호-->
-				ISBN: <input type="text" name="ISBN" value="${ISBN}">
+				ISBN: <input type="text" name="ISBN" value="${vo.ISBN}">
 				<!-- 현재 댓글이 누구의(?) 댓글인가 -->
 				nick: <input type="hidden" name="nick" value="1"/>
 				<!-- 작업 모드, 1 => 댓글 저장, 2 => 댓글 수정, 3 => 댓글 삭제 -->
