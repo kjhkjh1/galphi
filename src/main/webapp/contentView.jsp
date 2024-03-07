@@ -135,7 +135,19 @@
 	BookCommentList bookCommentList = BookCommentService.getInstance().selectCommentList(ISBN);
 	request.setAttribute("bookCommentList", bookCommentList);
 %>
+<<<<<<< HEAD
 <form class="m-3" action="insertcommentOK.jsp" method="post" name="commentForm">
+=======
+<<<<<<< HEAD
+<form class="m-3" action="insertcommentOK.jsp" method="post" name="commentForm">
+=======
+<<<<<<< HEAD
+<form class="m-3" action="insertcommentOK.jsp" method="post" name="commentForm">
+=======
+
+>>>>>>> da8d9c4cdaab8157e15e3ad7fcd41f927824dbf0
+>>>>>>> d311b44d6b8af0cac4c7a401729a503d1c3a66ed
+>>>>>>> f34125b482ab24be1ad5cd5c862fccfbecfc4195
 	<table class="table table-hover" style="width: 1000px; margin-left: auto; margin-right: auto;">
 		<c:set var="comment" value="${bookCommentList.list}"/>
 		<!-- 댓글 입력 시 새로운 댓글 별점 반영해서 평점 새로 계산 -->
@@ -147,6 +159,7 @@
 		<%-- <fmt:formatNumber var="avg" value="${avg}" pattern="##.#"></fmt:formatNumber> --%>
 		<tr class="align-middle text-center">
 			<td>
+				<input type="text" name="avg" value="${avg}"/>
 				<figure class="text-center">
 				  <blockquote class="blockquote">
 				    <p class="fw-bold fs-3 text-secondary"><i class="bi bi-activity"></i> 먼저 읽어본 길라잡이들의 이야기 <i class="bi bi-activity"></i></p>
@@ -168,7 +181,11 @@
 					<c:forEach begin="1" end="${5 - (fillstars + halfStars)}" step="1" >
 						<i class="bi bi-star"></i>
 					</c:forEach>
+<<<<<<< HEAD
 					&nbsp;<b>평점: ${voavg}</b> 
+=======
+					&nbsp;<b>평점: ${avg}</b> 
+>>>>>>> f34125b482ab24be1ad5cd5c862fccfbecfc4195
 					<input type="hidden" name="avg" value="${avg}"/>
 					<input type="hidden" name="size" value="${comment.size()}"/>
 					
@@ -263,6 +280,7 @@
 		</c:if>
 	</table>
 <!-- 댓글 입력창 -->
+<<<<<<< HEAD
 	<c:if test="${nickname == null}">
 		<table class="table table-hover table-warning table-border" style="width: 700px; margin-left: auto; margin-right: auto;">
 			<tr style="background-color: royalblue;">
@@ -273,6 +291,9 @@
 		</table>
 	</c:if>
 	<c:if test="${nickname != null}">
+=======
+
+>>>>>>> f34125b482ab24be1ad5cd5c862fccfbecfc4195
 	<table class="table table-hover table-warning table-border" style="width: 700px; margin-left: auto; margin-right: auto;">
 		
 		<tr style="background-color: royalblue;">
@@ -286,7 +307,24 @@
 		<tr style="display: none;">
 			<td colspan="4">
 				<!-- 수정 또는 삭제할 댓글의 책번호-->
+<<<<<<< HEAD
 				ISBN: <input type="text" name="ISBN" value="${vo.ISBN}"/>
+=======
+<<<<<<< HEAD
+				ISBN: <input type="text" name="ISBN" value="${vo.ISBN}"/>
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+				ISBN: <input type="text" name="ISBN" value="${vo.ISBN}"/>
+=======
+				ISBN: <input type="text" name="ISBN" value="${comment[0].ISBN}"/>
+>>>>>>> da8d9c4cdaab8157e15e3ad7fcd41f927824dbf0
+=======
+				ISBN: <input type="text" name="ISBN" value="${vo.ISBN}">
+
+>>>>>>> fbaf90c363e30052e3bfee0da0dfa6d54ab02ae6
+>>>>>>> d311b44d6b8af0cac4c7a401729a503d1c3a66ed
+>>>>>>> f34125b482ab24be1ad5cd5c862fccfbecfc4195
 				<!-- 현재 댓글이 누구의(?) 댓글인가 -->
 				nick: <input type="hidden" name="nick" value="${nickname}"/>
 				<!-- 작업 모드, 1 => 댓글 저장, 2 => 댓글 수정, 3 => 댓글 삭제 -->

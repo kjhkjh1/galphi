@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.galphi.vo.BookVO">
+
+	<!-- 메인글 1건을 얻어온다. -->
+	<select id="selectByISBN" parameterType="int" resultType="vo">
+		select * from book where ISBN = #{ISBN} 
+	</select>
+	
+	<!-- 메인글 전체 개수를 얻어온다. -->
+	<select id="selectCount" resultType="int">
+		select count(*) from book 
+	</select>
+	
+	<!-- 1페이지 분량의 메인글을 얻어온다. -->
+	<select id="selectList" parameterType="java.util.HashMap" resultType="vo">
+		<![CDATA[
+		select * from (
+			select rownum rnum, TT.* from (
+				select * from book
+			) TT where rownum <= #{endNo} 
+		) where rnum >= #{startNo}
+		]]>
+	</select>
+	
+	<!-- 1페이지 분량의 오늘의 추천 도서를 얻어온다. -->
+	<select id="selectDailyList" parameterType="java.util.HashMap" resultType="vo">
+		<![CDATA[
+		select * from (
+			select rownum rnum, TT.* from (
+				select * from book where avg > 8 order by DBMS_RANDOM.RANDOM
+			) TT where rownum <= 10
+		) where rnum >= #{startNo}
+		]]>
+	</select>
+		
+	<!-- 1페이지 분량의 베스트 도서를 얻어온다. -->
+	<select id="selectBestList" parameterType="java.util.HashMap" resultType="vo">
+		<![CDATA[
+		select * from (
+			select rownum rnum, TT.* from (
+				select * from book order by avg desc
+			) TT where rownum <= 10
+		) where rnum >= #{startNo}
+		]]>
+	</select>
+	
+	<!-- 신간도서 전체 개수를 얻어온다. -->
+	<select id="selectNewCount" resultType="int">
+		select count(*) from book where TO_DATE(pDate) > sysdate - 90
+	</select>
+		
+	<!-- 1페이지 분량의 신간 도서를 얻어온다. -->
+	<select id="selectNewList" parameterType="java.util.HashMap" resultType="vo">
+		<![CDATA[
+		select * from (
+			select rownum rnum, TT.* from (
+				select * from book where TO_DATE(pDate) > sysdate - 90 order by pdate desc
+			) TT where rownum <= #{endNo} 
+		) where rnum >= #{startNo}
+		]]>
+	</select>
+	
+	<!-- 카테고리 소설 전체 개수를 얻어온다. -->
+	<select id="selectCategoryCount" parameterType="String" resultType="int">
+		select count(*) from book where category = #{list}
+	</select>
+	
+	<!-- 1페이지 분량의 카테고리 소설 도서를 얻어온다. -->
+	<select id="selectCategoryList" parameterType="com.galphi.vo.Param" resultType="vo">
+		<![CDATA[
+		select * from (
+			select rownum rnum, TT.* from (
+				select * from book where category = #{list}
+			) TT where rownum <= #{endNo}
+		) where rnum >= #{startNo}
+		]]>
+	</select>
+	
+	<select id="selectCountMulti" parameterType="com.galphi.vo.Param" resultType="int">
+		select count(*) from book where
+		<if test='category == "제목"'>
+			title like '%${item}%'
+		</if>
+		<if test='category == "저자"'>
+			author like '%${item}%'
+		</if>
+		<if test='category == "제목+저자"'>
+			title like '%${item}%' or author like '%${item}%'
+		</if>
+	</select>
+	
+	<select id="selectListMulti" parameterType="com.galphi.vo.Param" resultType="vo">
+			select * from (
+				select rownum rnum, TT.* from (
+					select * from book where
+						<if test='category == "제목"'>
+							title like '%${item}%'
+						</if>
+						<if test='category == "저자"'>
+							author like '%${item}%'
+						</if>
+						<if test='category == "제목+저자"'>
+							title like '%${item}%' or author like '%${item}%'
+						</if>
+		<![CDATA[
+				) TT where rownum <= #{endNo} 
+			) where rnum >= #{startNo}
+		]]>
+	</select>
+	
+	<update id="update" parameterType="com.galphi.vo.Param">
+		update book set avg = #{avg} where ISBN = #{ISBN}
+	</update>
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

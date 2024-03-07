@@ -28,7 +28,11 @@ delete bookcomment;
 
 insert into bookcomment (isbn, NICK, IDX, SCORE, MEMO) values(69, 'ȫ�浿', (select NVL(MAX(IDX), 0) + 1 from bookcomment), 5, 'test');
 
+<<<<<<< HEAD
 select * from bookcomment where ISBN = 101 order by idx desc;
+=======
+select * from bookcomment where ISBN = 69 order by idx desc;
+>>>>>>> f34125b482ab24be1ad5cd5c862fccfbecfc4195
 
 
 
