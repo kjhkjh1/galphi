@@ -23,6 +23,7 @@
 	BookCommentService.getInstance().insertComment(co);
 	request.setAttribute("ISBN", co.getISBN());
 	
+<<<<<<< HEAD
 	float avg = Float.parseFloat(request.getParameter("avg"));
 	 out.print(avg);
 	BookService.getInstance().update(avg, co.getISBN());
@@ -31,6 +32,10 @@
 %>
 
 
+=======
+	pageContext.forward("selectByISBN.jsp");
+%>
+>>>>>>> da8d9c4cdaab8157e15e3ad7fcd41f927824dbf0
 <%-- 11111 ${ISBN} <br/>
 2222 ${co.ISBN}<br/>
 333 ${co} --%>
