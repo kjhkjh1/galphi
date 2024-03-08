@@ -8,126 +8,142 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title></title>
+<title>Book</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-<link href="css/contentViewStyles.css" rel="stylesheet" />
-<script type="text/javascript" src="./js/register.js" defer="defer"></script>
-<link href="css/view.css" rel="stylesheet" />
+<link rel="icon" href="./images/galphi_fabi.jpg" type="image/x-icon">
+<style>@import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&display=swap')</style>
+<style>@import url('https://fonts.googleapis.com/css2?family=Gowun+Batang&family=Gowun+Dodum&display=swap')</style>
 </head>
 <body>
-	<div class="wrapper">
-		<div class="header">
-			<div class="logo">logo</div>
-			<div class="search">
-				<form action="list.jsp" method="post" name="search-requirement">
-					<select class="search-requirement" name="category">
-						<option>제목</option>
-						<option>저자</option>
-						<option>제목+저자</option>
-					</select>
-					<input type="text" class="input-search" placeholder="검색어 입력" name="item">
-					<input type="hidden" name="list" value="Search"/>
-					<input class="button button1" type="submit" value="검색"/>
-				</form>
-			</div>
-
-			<!-- <div class="login">
-				<button type="button" id="login_button"
-					onclick="location.href='login'">로그인</button>
-			</div> -->
-			<%
-			    if(session.getAttribute("nickname") == null)
-			    {			
-			        out.println("<input type=\"button\" id=\"login_btn\" class=\"login_btn\" value=\"로그인\" onclick=\"location.href='login.jsp'\">\n");
-			        out.println("<input type=\"button\" id=\"signin_btn\" class=\"signin_btn\" value=\"회원가입\" onclick=\"location.href='account_create.jsp'\">\n");
-			    }
-			    else
-			    {
-			        String nickname = (String) session.getAttribute("nickname");
-			        out.println(nickname+"님 로그인 되었습니다");
-			        out.print("<input type=\"button\" id=\"logout_btn\" class=\"logout_btn\" value=\"로그아웃\" onclick=\"location.href='logout.jsp'\">\n");
-			    }
-			%>
-		</div>
-
-		<div class="main">
-			<div class="Category">
-				<button type="button" class="cate_list" onclick="cate_list(this);">카테고리</button>
-				<div class="category">
-					<li><a href="list.jsp?list=Novel">소설</a></li>
-					<li><a href="list.jsp?list=Develop">자기개발</a></li>
-					<li><a href="list.jsp?list=It">IT/컴퓨터</a></li>
-					<li><a href="list.jsp?list=Child">아동</a></li>
-					<li><a href="list.jsp?list=History">역사</a></li>
+	<div class="container-fluid"
+		style="background-image: url('./images/bg.jpg'); 
+		background-repeat: no-repeat; 
+		background-attachment: scroll; 
+		background-size: cover;">
+		<!-- 헤더 -->
+		<header class="container text-center"
+			style="background-color: rgba(255, 255, 255, 0.7);">
+			<!-- 로고 / 검색 폼 / 회원가입-->
+			<div class="row">
+				<!-- 로고 -->
+				<div class="col-3">
+					<button class="btn" type="button" onclick="location.href='index.jsp'">
+						<img alt="갈피" src="./images/logo.png" title="로고">
+					</button>
 				</div>
-				<script>
-					function cate_list(element) {
-						var before = document.getElementsByClassName("active")[0] // 기존에 활성화된 버튼
-						if (before
-								&& document.getElementsByClassName("active")[0] != element) { // 자신 이외에 이미 활성화된 버튼이 있으면
-							before.nextElementSibling.style.maxHeight = null; // 기존에 펼쳐진 내용 접고
-							before.classList.remove("active"); // 버튼 비활성화
-						}
-						element.classList.toggle("active"); // 활성화 여부 toggle
+				<!-- 로고 끝 -->
+				<!-- 검색 폼 -->
+				<div class="col-6 pt-5">
+					<br/>
+					<form class="form-control form-control-sm d-flex" action="list.jsp"
+						method="post" name="search-requirement"
+						style="background-color: #6D4C3D; border-radius: 12px; font-family: 'Gowun Dodum', sans-serif;">
+						<select class="mr-2 text-center" name="category"
+							style="width: 100px; background-color: #6D4C3D; color: white; border: none;">
+							<option>제목</option>
+							<option>저자</option>
+							<option>제목+저자</option>
+						</select>&nbsp; 
+						<input type="text" class="form-control form-control-sm" placeholder="&nbsp;검색어를 입력하세요" name="item"> 
+						<input type="hidden" name="list" value="Search"/>&nbsp;
+						<button class="btn bg-primary" type="submit">
+							<i class="bi bi-search text-white"></i>
+						</button>
+					</form>
+					<!-- 검색 폼 끝 -->
+				</div>
+				<!-- 로그인/회원가입 폼 -->
+				<div class="col-3" style="font-family: 'Gowun Dodum', sans-serif;">
+					<!-- <button class="btn btn-sm text-black-50 pt-4" type="button"
+						id="login_button" onclick="location.href='login'"> 로그인 | 회원가입
+					</button> -->
+					<%
+					    if(session.getAttribute("nickname") == null)
+					    {			
+					        out.println("<input type=\"button\" id=\"login_button\" class=\"btn btn-sm text-black-50 pt-4\" value=\"로그인\" onclick=\"location.href='login.jsp'\">\n");
+					        out.println("<input type=\"button\" id=\"login_button\" class=\"btn btn-sm text-black-50 pt-4\" value=\"회원가입\" onclick=\"location.href='account_create.jsp'\">\n");
+					    }
+					    else
+					    {
+					        String nickname = (String) session.getAttribute("nickname");
+					        out.println(nickname+"님 로그인 되었습니다");
+					        out.print("<input type=\"button\" id=\"logout_btn\" class=\"btn btn-sm text-black-50 pt-4\" value=\"로그아웃\" onclick=\"location.href='logout.jsp'\">\n");
+					    }
+					%>
+				</div>
+				<!-- 로그인/회원가입 폼 끝-->
+			</div>
+			<!-- 로고 / 검색 폼 / 회원가입 끝-->
 
-						var content = element.nextElementSibling;
-						if (content.style.maxHeight != 0) { // 버튼 다음 요소가 펼쳐져 있으면
-							content.style.maxHeight = null; // 접기
-						} else {
-							content.style.maxHeight = content.scrollHeight + "px"; // 접혀있는 경우 펼치기
-						}
-					}
-				</script>
+			<!-- 카테고리 네비게이션 -->
+			<div class="d-flex mx-5 justify-content-start">
+				<ul class="d-flex nav nav-tabs rounded-pill" style="border: none;">
+					<li class="nav-item dropdown"
+						style="background-color: none; border-color: #6D4C3D;">
+						<a class="nav-link dropdown-toggle link-light" data-bs-toggle="dropdown" href="#"> 
+							<span style="color: #6D4C3D; font-family: 'Nanum Myeongjo', serif;">카테고리</span>
+						</a>
+						<ul class="dropdown-menu" style="opacity: 0.8">
+							<li style="font-family: 'Nanum Myeongjo', serif;"><a class="dropdown-item" href="list.jsp?list=Novel">
+								<span style="color: #6D4C3D;">소설</span></a></li>
+							<li style="font-family: 'Nanum Myeongjo', serif;"><a class="dropdown-item" href="list.jsp?list=Develop">
+								<span style="color: #6D4C3D;">자기계발</span></a></li>
+							<li style="font-family: 'Nanum Myeongjo', serif;"><a class="dropdown-item" href="list.jsp?list=It">
+								<span style="color: #6D4C3D;">IT/컴퓨터</span></a></li>
+							<li style="font-family: 'Nanum Myeongjo', serif;"><a class="dropdown-item" href="list.jsp?list=Child">
+								<span style="color: #6D4C3D;">아동</span></a></li>
+							<li style="font-family: 'Nanum Myeongjo', serif;"><a class="dropdown-item" href="list.jsp?list=History">
+								<span style="color: #6D4C3D;">역사</span></a></li>
+						</ul>
+					</li>
+				</ul>
 			</div>
-		</div>
-	</div>
-	
-	<!-- Page Content-->
-	<div class="container px-4 px-lg-5">
-		<!-- Heading Row-->
-		<fmt:formatDate var="pDate" value="${vo.pDate}" pattern="yy.MM.dd"/>
-		<fmt:formatNumber var="voavg" value="${vo.avg}" pattern="##.#"></fmt:formatNumber>
-		<div class="row gx-4 gx-lg-1 align-items-center my-5">
-			<div class="col-lg-7">
-				<img class="mx-auto d-block" alt="title" src="./images/${vo.title}.jpg" style="width: 300px; height: 400px;">
+			<!-- 카테고리 네비게이션 끝 -->
+		</header>
+		<!-- Page Content-->
+		<main class="container text-center pt-1"
+			style="background-color: rgba(255, 255, 255, 0.85);">
+			<div class="container px-4 px-lg-5" style="font-family: 'Gowun Dodum', sans-serif;">
+				<!-- Heading Row-->
+				<fmt:formatDate var="pDate" value="${vo.pDate}" pattern="yy.MM.dd"/>
+				<fmt:formatNumber var="voavg" value="${vo.avg}" pattern="##.#"></fmt:formatNumber>
+				<div class="row gx-4 gx-lg-1 align-items-center my-5">
+					<div class="col-lg-5">
+						<img class="mx-auto d-block" alt="title" src="./images/${vo.ISBN}.jpg" style="width: 60%; height: 60%;">
+					</div>
+					<div class="col-lg-6" style="text-align: left;">
+						<h2 class="font-weight-light">${vo.title}</h2><br/>
+						<p>${vo.author}</p>
+						<p>${vo.publisher}</p>
+						<p>출판일: ${pDate}</p>
+						<p>평점: ${voavg}</p>
+					</div>
+				</div>
+				<hr/><br/>
+				<!-- Content Row-->
+				<div class="row gx-4 gx-lg-1" style="text-align: left;">
+					<div class="card-body">
+						<h2 class="card-title">책 소개</h2><br/>
+						<p class="card-text">${vo.summary}</p><br/><hr/><br/>
+					</div>
+					<div class="card-body">
+						<h2 class="card-title">목차</h2><br/>
+						<p class="card-text">${vo.chap}</p><br/><hr/><br/>
+					</div>
+					<div class="card-body">
+						<h2 class="card-title">서평</h2><br/>
+						<p class="card-text">${vo.review}</p><br/><br/>
+					</div>
+				</div>
 			</div>
-			<div class="col-lg-5">
-				<h1 class="font-weight-light">${vo.title}</h1>
-				<p>${vo.author}</p>
-				<p>${vo.publisher}</p>
-				<p>출판일: ${pDate}</p>
-				<p>평점: ${voavg}</p>
-				<a class="btn btn-primary" href="#!">Call to Action!</a>
-			</div>
-		</div>
-		<hr/><br/>
-		<!-- Content Row-->
-		<div class="row gx-4 gx-lg-1">
-			<div class="card-body">
-				<h2 class="card-title">책 소개</h2><br/>
-				<p class="card-text">${vo.summary}</p><br/><hr/><br/>
-			</div>
-			<div class="card-body">
-				<h2 class="card-title">목차</h2><br/>
-				<p class="card-text">${vo.chap}</p><br/><hr/><br/>
-			</div>
-			<div class="card-body">
-				<h2 class="card-title">서평</h2><br/>
-				<p class="card-text">${vo.review}</p><br/><br/>
-			</div>
-			<!-- 
-			<div class="card-footer">
-				<a class="btn btn-primary btn-sm" href="#!">More Info</a>
-			</div>
-			-->
-		</div>
-	</div>
-
-	<!-- 댓글 출력 -->	
+			<br/><br/>
+		</main><br/>
+		
+<!-- 댓글 출력 -->	
 <%
 	request.setCharacterEncoding("UTF-8");
 	int ISBN = Integer.parseInt(request.getParameter("ISBN"));	
@@ -347,52 +363,18 @@
 	</table>
 	</c:if>
 </form>	
-	
-	<!-- Footer-->
-	<footer class="py-5 bg-dark">
-		<div class="container px-4 px-lg-5">
-			<p class="m-0 text-center text-white">Copyright &copy; Your
-				Website 2023</p>
-		</div>
-	</footer>
-	<!-- Bootstrap core JS-->
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-	<!-- Core theme JS-->
-	<script src="js/scripts.js"></script>
-
-<div class="container mt-3">
-  <h3>Modal Example</h3>
-  <p>Click on the button to open the modal.</p>
-  
- 
-</div>
-
-<!-- The Modal -->
-<div class="modal" id="myModal">
-  <div class="modal-dialog">
-    <div class="modal-content">
-
-      <!-- Modal Header -->
-      <div class="modal-header">
-        <h4 class="modal-title">Modal Heading</h4>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-      </div>
-
-      <!-- Modal body -->
-      <div class="modal-body">
-        Modal body..
-      </div>
-
-      <!-- Modal footer -->
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-      </div>
-
-    </div>
-  </div>
-</div>
-
-
+		
+		<!-- Footer-->
+		<footer class="container bg-dark">
+			<br/><br/>
+			<!-- 카피라이트 -->
+			<div class="container px-4 px-lg-5">
+				<p class="m-0 text-center text-white">Copyright &copy; TJoeun
+					Academy Team Project: Galphi 2024</p>
+			</div>
+			<!-- 만든이 / 연락처 -->
+			<br/><br/>
+		</footer>
+	</div>
 </body>
 </html>

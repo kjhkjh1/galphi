@@ -130,7 +130,8 @@
 										</h4>
 										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${vo.author}<br/><br/>
 										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${vo.publisher}&nbsp;&nbsp;/&nbsp;&nbsp;${pDate}<br/><br/>
-										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;평점: ${vo.avg}<br/>
+										<fmt:formatNumber var="voavg" value="${vo.avg}" pattern="##.#"></fmt:formatNumber>
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;평점: ${voavg}<br/>
 									</td>
 								</tr>
 							</table>
