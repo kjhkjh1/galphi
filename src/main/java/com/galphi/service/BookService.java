@@ -158,6 +158,7 @@ public class BookService {
 		return bookList;
 	}
 	
+	// 댓글 저장 수정 삭제 시 책의 평점 조정하는 기능
 	public void update(float avg, int ISBN) {
 		SqlSession mapper = MySession.getSession();
 		Param param = new Param(ISBN, avg);
